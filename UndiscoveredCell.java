@@ -20,6 +20,7 @@ public class UndiscoveredCell extends Actor {
                     w.revealEmptyCell( getX(), getY() );
                     w.removeObject(this);
                     
+                    w.checkForWin();
                 }
             } else if (mi.getButton() == 3) {
                 toggleSuspect();

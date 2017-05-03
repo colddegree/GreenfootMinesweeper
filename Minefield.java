@@ -159,6 +159,20 @@ public class Minefield extends World {
         }
         
         if (!failed) {
+            for (int y = 0; y < getHeight(); y++) {
+                for (int x = 0; x < getWidth(); x++) {
+                    List<UndiscoveredCell> uCells = getObjectsAt(x, y, UndiscoveredCell.class);
+                    List<Mine> mines = getObjectsAt(x, y, Mine.class);
+                    
+                    if ( uCells.size() == mines.size() && mines.size() > 0 ) {
+                        UndiscoveredCell uc = uCells.get(0);
+                        if ( !uc.isSuspected() ) {
+                            uCells.get(0).toggleSuspect();
+                        }
+                    }
+                }
+            }
+            
             showText("You win!", getWidth() / 2, getHeight() / 2);
             Greenfoot.stop();
         }
