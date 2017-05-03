@@ -3,12 +3,14 @@ import java.util.List;
 
 public class Minefield extends World {
     private static final int DEFAULT_CELL_SIZE = 16;
+    private static final int BACKGROUNDS_QUANTITY = 6;
     private boolean neverRevealed = true;
     private int minesQuantity;
 
     public Minefield() {
-        super(9, 9, DEFAULT_CELL_SIZE * 2);
-        this.minesQuantity = 10;     
+        super(20, 15, DEFAULT_CELL_SIZE * 2);
+        this.minesQuantity = 25;
+        
         init();
     }
     
@@ -21,6 +23,8 @@ public class Minefield extends World {
     public void init() {
         setPaintOrder(UndiscoveredCell.class, Mine.class, EmptyCell.class);
         coverFieldWithUndiscoveredCells();
+        
+        setBackground("images/backgrounds/" + Greenfoot.getRandomNumber(BACKGROUNDS_QUANTITY) + ".png");
         
         Greenfoot.start();
     }
@@ -79,7 +83,7 @@ public class Minefield extends World {
         }
     }
 
-    public void revealEmptyCells(int x, int y) {
+    public void revealEmptyCell(int x, int y) {
         if ( (x < 0) || ( x > getWidth() ) || (y < 0) || ( y > getHeight() ) ) {
             return;
         }
@@ -109,16 +113,16 @@ public class Minefield extends World {
         if (ec.getNeighboursMinesQuantity() == 0) {
             ec.toggleVisited();
             
-            revealEmptyCells(x - 1, y);
-            revealEmptyCells(x + 1, y);
+            revealEmptyCell(x - 1, y);
+            revealEmptyCell(x + 1, y);
             
-            revealEmptyCells(x, y - 1);
-            revealEmptyCells(x, y + 1);
+            revealEmptyCell(x, y - 1);
+            revealEmptyCell(x, y + 1);
             
-            revealEmptyCells(x - 1, y - 1);
-            revealEmptyCells(x - 1, y + 1);
-            revealEmptyCells(x + 1, y - 1);
-            revealEmptyCells(x + 1, y + 1);
+            revealEmptyCell(x - 1, y - 1);
+            revealEmptyCell(x - 1, y + 1);
+            revealEmptyCell(x + 1, y - 1);
+            revealEmptyCell(x + 1, y + 1);
         }
     }
     
@@ -170,6 +174,8 @@ public class Minefield extends World {
                 
                 if ( uCells.size() > mines.size() && uCells.get(0).isSuspected() ) {
                     uCells.get(0).setImage("images/wrong_suspected_mine.png");
+                } else if ( uCells.size() == mines.size() && mines.size() > 0 ) {
+                    uCells.get(0).setImage("images/0_cell.png");
                 }
             }
         }

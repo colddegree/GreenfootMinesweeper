@@ -17,7 +17,7 @@ public class UndiscoveredCell extends Actor {
                     }
                     
                     w.checkForMine( getX(), getY() );
-                    w.revealEmptyCells( getX(), getY() );
+                    w.revealEmptyCell( getX(), getY() );
                     w.removeObject(this);
                     
                 }
