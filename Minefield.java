@@ -10,7 +10,6 @@ public class Minefield extends World {
     public Minefield() {
         super(20, 15, DEFAULT_CELL_SIZE * 2);
         this.minesQuantity = 25;
-        
         init();
     }
     
@@ -22,9 +21,8 @@ public class Minefield extends World {
     
     public void init() {
         setPaintOrder(UndiscoveredCell.class, Mine.class, EmptyCell.class);
-        coverFieldWithUndiscoveredCells();
-        
         setBackground("images/backgrounds/" + Greenfoot.getRandomNumber(BACKGROUNDS_QUANTITY) + ".png");
+        coverFieldWithUndiscoveredCells();        
         
         Greenfoot.start();
     }
@@ -46,7 +44,7 @@ public class Minefield extends World {
             do {
                 x = Greenfoot.getRandomNumber( getWidth() );
                 y = Greenfoot.getRandomNumber( getHeight() );
-            } while ( (x == firstRevealX) || (y == firstRevealY) || (getObjectsAt(x, y, Mine.class).size() > 0) );
+            } while ( (x == firstRevealX) && (y == firstRevealY) || (getObjectsAt(x, y, Mine.class).size() > 0) );
             
             Mine mine = new Mine();
             addObject(mine, x, y);
