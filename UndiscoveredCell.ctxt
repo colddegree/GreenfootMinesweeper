@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=UndiscoveredCell
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ init()
+comment3.params=
+comment3.target=void\ refreshImageScale()
+comment4.params=filename
+comment4.target=void\ setImage(java.lang.String)
+comment5.params=
+comment5.target=void\ toggleSuspect()
+comment6.params=
+comment6.target=boolean\ isSuspected()
+numComments=7

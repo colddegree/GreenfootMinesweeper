@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Mine
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ init()
+comment3.params=
+comment3.target=void\ refreshImageScale()
+comment4.params=filename
+comment4.target=void\ setImage(java.lang.String)
+numComments=5

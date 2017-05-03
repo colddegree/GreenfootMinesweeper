@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=EmptyCell
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ init()
+comment3.params=
+comment3.target=int\ getNeighboursMinesQuantity()
+comment4.params=
+comment4.target=boolean\ isVisited()
+comment5.params=
+comment5.target=void\ toggleVisited()
+numComments=6
