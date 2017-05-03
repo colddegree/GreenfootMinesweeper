@@ -1,18 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class EmptyCell extends Actor {    
-    private int neighboursMinesQuantity;
+public class EmptyCell extends ScalableCell {    
+    private int neighboursMinesQuantity = -1;
     private boolean visited = false;
     
-    public void act() {
-        
+    public EmptyCell(World world) {
+        super(world);
+        refreshImageScale();
     }
-
+    
     public void init() {
         neighboursMinesQuantity = getNeighbours(1, true, Mine.class).size();
         setImage("images/" + neighboursMinesQuantity + "_cell.png");
-        int cellSize = getWorld().getCellSize();
-        getImage().scale(cellSize, cellSize);
     }
     
     public int getNeighboursMinesQuantity() {

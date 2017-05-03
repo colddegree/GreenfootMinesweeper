@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class UndiscoveredCell extends Actor {
+public class UndiscoveredCell extends ScalableCell {
     private boolean suspected = false;
+    
+    public UndiscoveredCell(World world) {
+        super(world);
+        refreshImageScale();
+    }
 
     public void act() {
         MouseInfo mi = Greenfoot.getMouseInfo();
@@ -34,20 +39,6 @@ public class UndiscoveredCell extends Actor {
         if ( Greenfoot.isKeyDown("space") ) {
             getImage().setTransparency(210);
         }
-    }
-    
-    public void init() {
-        refreshImageScale();
-    }
-    
-    public void refreshImageScale() {
-        int cellSize = getWorld().getCellSize();
-        getImage().scale(cellSize, cellSize);
-    }
-    
-    public void setImage(String filename) {
-        super.setImage(filename);
-        refreshImageScale();
     }
     
     public void toggleSuspect() {

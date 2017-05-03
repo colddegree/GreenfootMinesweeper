@@ -46,9 +46,7 @@ public class Minefield extends World {
                 y = Greenfoot.getRandomNumber( getHeight() );
             } while ( (x == firstRevealX) && (y == firstRevealY) || (getObjectsAt(x, y, Mine.class).size() > 0) );
             
-            Mine mine = new Mine();
-            addObject(mine, x, y);
-            mine.init();
+            addObject(new Mine(this), x, y);
         }
     }
     
@@ -56,7 +54,7 @@ public class Minefield extends World {
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {
                 if (getObjectsAt(x, y, Mine.class).size() == 0) {
-                    EmptyCell ec = new EmptyCell();
+                    EmptyCell ec = new EmptyCell(this);
                     addObject(ec, x, y);
                     ec.init();
                 }
@@ -67,9 +65,7 @@ public class Minefield extends World {
     public void coverFieldWithUndiscoveredCells() {
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {
-                UndiscoveredCell uc = new UndiscoveredCell();
-                addObject(uc, x, y);
-                uc.init();
+                addObject(new UndiscoveredCell(this), x, y);
             }
         }
     }
